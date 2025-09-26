@@ -42,15 +42,21 @@ struct ancestry_node_t *make_tree(struct person_t *person) {
 }
 
 bool add_mom(struct ancestry_node_t *child_node, struct person_t *mom_person) {
-    // TODO: Hvis der allerede er en mor-stamtavle, skal funktionen fejle.
-    // TODO: Hvis ikke, skal `mom_person` indsættes i en `mom_node` som først skal allokeres.
-    return false;
+    if (child_node->mom != NULL) {
+        return false;
+    }
+
+    child_node->mom = make_tree(mom_person);
+    return true;
 }
 
 bool add_dad(struct ancestry_node_t *child_node, struct person_t *dad_person) {
-    // TODO: Hvis der allerede er en far-stamtavle, skal funktionen fejle.
-    // TODO: Hvis ikke, skal `dad_person` indsættes i en `dad_node` som først skal allokeres.
-    return false;
+    if (child_node->dad != NULL) {
+        return false;
+    }
+
+    child_node->dad = make_tree(dad_person);
+    return true;
 }
 
 void free_tree(struct ancestry_node_t *node) {

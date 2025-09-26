@@ -5,8 +5,19 @@ void small_stack_allocated_tree();
 void large_heap_allocated_tree();
 
 int main(void) {
-    small_stack_allocated_tree();
+    //small_stack_allocated_tree();
     // large_heap_allocated_tree();
+
+    struct person_t *child = make_person("Hanne", "Nielsen", 1972);
+    struct person_t *dad   = make_person("Lars", "Nielsen", 1946);
+    struct person_t *mom   = make_person("Magrethe", "Jensen", 1944);
+
+    struct ancestry_node_t *child_node = make_tree(child);
+    add_dad(child_node, dad);
+    add_mom(child_node, mom);
+
+    print_tree(child_node);
+
 
     return 0;
 }
