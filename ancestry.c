@@ -6,23 +6,37 @@
 #include "ancestry.h"
 
 struct person_t *make_person(char *first_name, char *last_name, int year_born) {
-    // TODO: Allokér plads til en `struct person_t`.
-    // TODO: Allokér også plads til kopier af `first_name` og `last_name`.
-    // TODO: Kopiér indholdet fra `first_name` og `last_name` over i kopierne.
-    // TODO: Husk at gøre plads til både alle tegnene i navnene + 1 NUL-byte.
+    //Heap allocation
+    struct person_t *new = malloc(sizeof(struct person_t) );;
+    new->first_name = malloc( strlen(first_name) + 1);
+    new->last_name = malloc( strlen(last_name) + 1);
+    new->year_born = year_born;
 
-    return NULL;
+    //copy strings:
+    strcpy(new->first_name, first_name);
+    strcpy(new->last_name , last_name);
+
+    return new;
 }
 
 void free_person(struct person_t *person) {
-    // TODO: Der skal være et free()-kald for hver malloc() i make_person().
-    // TODO: Du må gerne sætte `first_name` og `last_name` til NULL *EFTER* de er free()'et.
+    //free names
+    free(person->first_name);
+    person->first_name = NULL; //sikker C :)). Avoid use-after-free bug.
+    free(person->last_name);
+    person->last_name = NULL;
+
+    //free struct
+    free(person);
+    person = NULL;
 }
 
 struct ancestry_node_t *make_tree(struct person_t *person) {
     // TODO: Allokér plads til en `struct ancestry_node_t`.
     // TODO: Sæt `person` til input-personen.
     // TODO: Sæt `mom` og `dad` til NULL.
+
+
     return NULL;
 }
 
