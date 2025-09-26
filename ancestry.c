@@ -63,6 +63,17 @@ void free_tree(struct ancestry_node_t *node) {
     // TODO: Kald `free_person()` på personen i noden.
     // TODO: Kald `free_tree()` på begge forældre-stamtræer.
     // TODO: Sæt pointerne til NULL efter de er free()'et.
+
+    free_person(node->person);
+    node->person = NULL;
+
+    free(node->mom);
+    free(node->dad);
+    node->mom = NULL;
+    node->dad = NULL;
+
+    free(node);
+    node = NULL;
 }
 
 void print_tree_recursive(struct ancestry_node_t *node, char *prefix, bool is_last) {

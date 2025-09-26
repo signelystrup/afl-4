@@ -18,7 +18,6 @@ int main(void) {
 
     print_tree(child_node);
 
-
     return 0;
 }
 
