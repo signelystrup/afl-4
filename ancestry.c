@@ -7,7 +7,7 @@
 
 struct person_t *make_person(char *first_name, char *last_name, int year_born) {
     //Heap allocation
-    struct person_t *new = malloc(sizeof(struct person_t) );;
+    struct person_t *new = malloc(sizeof(struct person_t) );
     new->first_name = malloc( strlen(first_name) + 1);
     new->last_name = malloc( strlen(last_name) + 1);
     new->year_born = year_born;
@@ -32,12 +32,13 @@ void free_person(struct person_t *person) {
 }
 
 struct ancestry_node_t *make_tree(struct person_t *person) {
-    // TODO: Allokér plads til en `struct ancestry_node_t`.
-    // TODO: Sæt `person` til input-personen.
-    // TODO: Sæt `mom` og `dad` til NULL.
+    struct ancestry_node_t *tree = malloc(sizeof (struct ancestry_node_t) );
 
+    tree->person = person;
+    tree->mom = NULL;
+    tree->dad = NULL;
 
-    return NULL;
+    return tree;
 }
 
 bool add_mom(struct ancestry_node_t *child_node, struct person_t *mom_person) {
