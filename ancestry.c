@@ -67,10 +67,15 @@ void free_tree(struct ancestry_node_t *node) {
     free_person(node->person);
     node->person = NULL;
 
-    free(node->mom);
-    free(node->dad);
-    node->mom = NULL;
-    node->dad = NULL;
+    if (node->mom != NULL) {
+        free_tree(node->mom);
+    }
+    node->mom == NULL;
+
+    if (node->dad != NULL) {
+        free_tree(node->dad);
+    }
+    node->dad == NULL;
 
     free(node);
     node = NULL;
