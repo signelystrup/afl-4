@@ -64,18 +64,19 @@ void free_tree(struct ancestry_node_t *node) {
     // TODO: Kald `free_tree()` på begge forældre-stamtræer.
     // TODO: Sæt pointerne til NULL efter de er free()'et.
 
+    printf("Hedder: %s\n", node->person->first_name);
     free_person(node->person);
     node->person = NULL;
 
     if (node->mom != NULL) {
         free_tree(node->mom);
     }
-    node->mom == NULL;
+    node->mom = NULL;
 
     if (node->dad != NULL) {
         free_tree(node->dad);
     }
-    node->dad == NULL;
+    node->dad = NULL;
 
     free(node);
     node = NULL;

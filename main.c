@@ -18,6 +18,9 @@ int main(void) {
 
     print_tree(child_node);
 
+    free_tree(child_node);
+    print_tree(child_node);
+
     return 0;
 }
 
